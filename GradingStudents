@@ -1,0 +1,14 @@
+def gradingStudents(grades):
+    gr=[]   
+    for i in grades:
+        if i <38:
+            gr.append(i)
+        else :
+            rem=i%5
+            if (5-rem) < 3:
+                gr.append(i-rem +5)
+            #elif (5-rem) > 3:
+               # gr.append(i-rem) 
+            else:    
+                gr.append(i)   
+    return gr 
