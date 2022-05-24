@@ -1,0 +1,3 @@
+N, M = map(int, input().split())
+mul= N*M
+print(mul//2)
