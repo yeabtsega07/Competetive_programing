@@ -1,0 +1,20 @@
+class Solution: 
+    def select(self, arr, i):
+        # code here 
+        for i in range (len(arr)-1):
+            m_val=min(arr[i:])
+            m_in=arr.index(m_val,i)
+            if arr[i]!=arr[m_in]:
+                arr[i],arr[m_in]=arr[m_in],arr[i]
+        return i        
+                
+            
+    
+    def selectionSort(self, arr,n):
+        #code here
+        for i in range (len(arr)-1):
+            m_val=min(arr[i:])
+            m_in=arr.index(m_val,i)
+            if arr[i]!=arr[m_in]:
+                arr[i],arr[m_in]=arr[m_in],arr[i]
+        return arr 
