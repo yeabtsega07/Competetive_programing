@@ -1,0 +1,14 @@
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        ar=s.split(" ")
+        sent=""
+        for i in range(len(ar)):
+            min_ind=i
+            for j in range(i+1, len(ar)):
+                if ar[j][-1]<ar[min_ind][-1]:
+                    min_ind=j
+            if i!= min_ind:
+                ar[min_ind],ar[i]=ar[i],ar[min_ind]
+            sent+=ar[i][:-1]+" "
+        return sent[:-1]    
+            
