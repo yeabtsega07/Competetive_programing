@@ -1,0 +1,13 @@
+def insertionSort1(n, arr):
+    # Write your code here
+    
+    for i in range (n-1,0,-1):
+        cur_val=arr[i]
+        poss=i
+        while cur_val<arr[poss-1]and poss>0:
+            arr[poss]=arr[poss-1]
+            poss-=1
+            print(" ".join([str(i)for i in arr]))
+        arr[poss]=cur_val    
+    print(" ".join([str(i)for i in arr]))        
+        
