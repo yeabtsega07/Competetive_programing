@@ -1,0 +1,12 @@
+class Solution(object):
+     def largestNumber(self, nums: List[int]) -> str:
+        for i in range(len(nums)-1):
+            for j in range(i+1,len(nums)):
+                a=int(str(nums[i])+str(nums[j]))
+                b=int(str(nums[j])+str(nums[i]))
+                if b>a:
+                    nums[i],nums[j]=nums[j],nums[i]
+        final="".join(str(n) for n in nums)
+        final=int(final)
+        final=str(final)
+        return final
