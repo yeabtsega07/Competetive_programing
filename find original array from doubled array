@@ -1,0 +1,17 @@
+class Solution:
+    def findOriginalArray(self, changed: List[int]) -> List[int]:
+        a=len(changed)
+        if a%2:
+            return []
+        changed.sort()
+        co=Counter(changed)
+        n=[]
+        for i in changed:
+            if i==0 and co[i]>=2:
+                co[i]-=2
+                n.append(i)
+            elif i>0 and co[i] and co[i*2]:
+                co[i]-=1
+                co[i*2]-=1
+                n.append(i)
+        return n if len(n)==a//2 else []
