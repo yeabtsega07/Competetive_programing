@@ -1,0 +1,12 @@
+    ans=0
+    output=0
+    for i in range(steps):
+        check=ans
+        if path[i]=="U":
+            ans+=1
+            
+        else:
+            ans-=1
+        if ans==0 and path[i]=="U":
+            output+=1
+    return output 
