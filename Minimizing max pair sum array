@@ -1,0 +1,9 @@
+class Solution:
+    def minPairSum(self, nums: List[int]) -> int:
+        nums.sort()
+        n=len(nums)
+        mxsm=0
+        for i in range(n//2):
+            if nums[i]+nums[-i-1]>mxsm:
+                mxsm=nums[i]+nums[-i-1]
+        return mxsm 
