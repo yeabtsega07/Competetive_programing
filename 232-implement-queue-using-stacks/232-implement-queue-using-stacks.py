@@ -1,5 +1,4 @@
 class MyQueue:
-
     def __init__(self):
         self.queue=[]
     def push(self, x: int) -> None:
@@ -11,8 +10,7 @@ class MyQueue:
     def empty(self) -> bool:
         if not self.queue:
             return True
-        else:
-            return False 
+        return False 
 
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()
