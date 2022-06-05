@@ -5,12 +5,10 @@ class MyQueue:
         self.queue=[]
     def push(self, x: int) -> None:
         self.queue.append(x)
-        print(self.queue)
     def pop(self) -> int:
         if self.queue:
             return self.queue.pop(0)
     def peek(self) -> int:
-        print(self.queue[0])
         return self.queue[0]
     def empty(self) -> bool:
         if not self.queue:
