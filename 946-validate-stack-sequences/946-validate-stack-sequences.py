@@ -7,5 +7,4 @@ class Solution:
             while len(stack) and point<len(popped)and popped[point]==stack[-1]:
                 stack.pop()
                 point+=1
-        if not stack:
-            return True
+        return point==len(popped)
