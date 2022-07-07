@@ -4,7 +4,7 @@ class Solution:
         point=0
         for i in (pushed):
             stack.append(i)
-            while len(stack) and popped[point]==stack[-1]:
+            while len(stack)and popped[point]==stack[-1]:
                 stack.pop()
                 point+=1
         return point==len(popped)
