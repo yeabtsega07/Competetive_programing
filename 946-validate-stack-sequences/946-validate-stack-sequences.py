@@ -4,9 +4,8 @@ class Solution:
         point=0
         for i in range(len(pushed)):
             stack.append(pushed[i])
-            for i in range(len(stack)):
-                if popped[point]==stack[-1]:
-                    stack.pop()
-                    point+=1
+            while len(stack) and point<len(popped)and popped[point]==stack[-1]:
+                stack.pop()
+                point+=1
         if not stack:
             return True
