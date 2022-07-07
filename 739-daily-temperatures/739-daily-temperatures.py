@@ -7,6 +7,6 @@ class Solution:
                 last=mono_stack.pop()
                 check[last]=i-last
             mono_stack.append(i)
-        return check    
+        return  check    
         
         
