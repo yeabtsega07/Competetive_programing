@@ -9,4 +9,5 @@ class Solution:
         for i in range(len(nums)):
             if nums[i]==target:
                 final.append(i)
-        return final  
+        return final        
+         
