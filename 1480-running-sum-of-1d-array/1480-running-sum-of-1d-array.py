@@ -1,10 +1,9 @@
 class Solution:
     def runningSum(self, nums: List[int]) -> List[int]:
-        sum_=[]
-        for i in nums:
-            if not sum_:
-                sum_.append(i)
+        for i,num in enumerate(nums):
+            if i==0:
+                pass
             else:
-                sum_.append(sum_[-1]+i)
-        return sum_        
+                nums[i]=num+nums[i-1]
+        return nums       
             
