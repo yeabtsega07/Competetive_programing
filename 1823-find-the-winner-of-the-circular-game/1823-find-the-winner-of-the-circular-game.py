@@ -3,15 +3,11 @@ class Solution:
         nums=[i for i in range(1,n+1)]
         if k==1:
             return nums[-1]
-        def recur(nums,k):
+        def recur(nums,k,i=0):
             if len(nums)==1:
                 return nums[0]
-            for i in range(k):
-                if i==k-1:
-                    nums.pop(0)
-                else:    
-                    val=nums.pop(0)
-                    nums.append(val)
-            return recur(nums,k)                    
-        return recur(nums,k)
+            i=(i+k)%len(nums)
+            nums.pop(i)
+            return recur(nums,k,i)                    
+        return recur(nums,k-1)
         
