@@ -14,4 +14,3 @@ class Solution:
                 add=""      
             return dict[n] 
         return recur(n)[k-1]
-        
