@@ -1,27 +1,19 @@
 class Solution:
     def compress(self, chars: List[str]) -> int:
-        s=""
+        count=1
         slow=0
-        fast=0
-        while slow<len(chars):
-            if fast==len(chars):
-                break
-            char=chars[slow]
-            s+=char
-
-            count=0    
-            while fast<len(chars):
-                if chars[fast]==char:
-                    fast+=1
-                    count+=1
-                else:
-                    slow=fast
-                    break
-            if count>1:        
-                s+=str(count)
-        for i,char in enumerate(s):
-            chars[i]=char
-        chars=chars[:len(s)]    
+        for i in range(1,len(chars)+1):
+            if i <len(chars) and chars[i]==chars[i-1]:
+                count+=1
+            else:
+                chars[slow]=chars[i-1]
+                slow+=1
+                if count>1:
+                    for j in str(count):
+                        chars[slow]=j
+                        slow+=1
+                count=1    
+        chars=chars[:slow]           
         return len(chars)
             
                 
