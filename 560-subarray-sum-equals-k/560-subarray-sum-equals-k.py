@@ -3,10 +3,15 @@ class Solution:
         prefix={0:1}
         sum_=0
         ans=0
-        for num in nums:
+        for i,num in enumerate(nums):
             sum_+=num
-            ans+=prefix.get(sum_-k,0)
-            prefix[sum_]=1+prefix.get(sum_,0)
+            if sum_-k in prefix.keys():
+                ans+=prefix[sum_-k]     
+
+            if sum_ in prefix.keys():
+                    prefix[sum_]+=1
+            else:    
+                     prefix[sum_]=1
         return ans                
                 
                 
