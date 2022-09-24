@@ -1,27 +1,27 @@
 class Solution:
     def calculate(self, s: str) -> int:
+        opp="+"
+        signs=["/","*","-","+"]
+        nums=set(str(i) for i in range(10))
         stack=[]
-        cur_num=0
-        sign="+"
-        nums=set(str(x) for x in range(10))
-        opps={"+","-","/","*"}
+        cur=0
         for i in range(len(s)):
-            char=s[i]
-            if char in nums:
-                cur_num=cur_num*10+int(char)
-            if char in opps or i==len(s)-1:
-                
-                if sign=="/" and stack:
-                    stack[-1]=int(stack[-1]/cur_num)
-                elif sign=="*" and stack:
-                    stack[-1]*=cur_num
-                elif sign=="-" and stack:
-                    stack.append(-cur_num)
+            if s[i] in nums:
+                cur= cur*10 + int(s[i])   
+            if s[i] in signs or i==len(s)-1:
+                if opp=="-":
+                    stack.append(-cur)
+                elif opp=="/":
+                    stack[-1]=int(stack[-1]/cur)
+                elif opp=="*":
+                    stack[-1]*=cur
                 else:
-                    stack.append(cur_num)
-                sign=char
-                cur_num=0
-        return sum(stack)       
+                    stack.append(cur)
+                opp=s[i]
+                cur=0  
+                
+        return sum(stack)        
+      
                 
                 
                 
