@@ -2,7 +2,7 @@ class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         pre=0
         lst=0
-        ans=[]
+        ans=float("inf")
         for i,n in enumerate(nums):
             if not pre:
                 pre+=n
@@ -11,8 +11,8 @@ class Solution:
                 continue
             pre+=n
             while pre>=target:
-                ans.append(i-lst+1)
+                ans=min(i-lst+1,ans)
                 pre-=nums[lst]
                 lst+=1
-        return min(ans) if ans else 0        
+        return 0 if ans==float("inf") else ans        
                 
