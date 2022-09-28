@@ -1,15 +1,12 @@
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
-
-        pre={0:0}
-        sum_=0
-        for i , n in enumerate(nums):
-            sum_+=n
-            if sum_%k not in pre:
-                pre[sum_%k]=i+1
-            elif pre[sum_%k]<i:
+        rem={0:-1}
+        pre=0
+        for i,n in enumerate(nums):
+            pre+=n
+            if pre%k not in rem:
+                rem[pre%k]=i
+            elif i- rem[pre%k]>1:
                 return True
         return False    
-            
-            
         
