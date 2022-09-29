@@ -11,9 +11,7 @@ class Solution:
                 cnt-=1
             else:
                 cnt+=1
-            if not cnt:
-                cur=n
-                cnt+=1
+
         return cur       
                 
          
