@@ -3,16 +3,21 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        lft,dummy,rgt=0,0,len(nums)-1
-        while dummy<=rgt:
-            if nums[dummy]==0:
-                nums[lft],nums[dummy]=nums[dummy],nums[lft]
-                lft+=1
-                dummy+=1
-            elif nums[dummy]==1:
-                dummy+=1
+        track=[0]*3
+        for num in nums:
+            if num==0:
+                track[0]+=1
+            elif num==1:
+                track[1]+=1
             else:
-                nums[rgt],nums[dummy]=nums[dummy],nums[rgt]
-                rgt-=1
-        return nums       
-        
+                track[2]+=1
+        l=0        
+        for i, num in enumerate(track):
+            while num>0:
+                nums[l]=i
+                l+=1
+                num-=1    
+        return nums        
+            
+                
+                
