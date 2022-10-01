@@ -1,13 +1,10 @@
 class Solution:
     def minStartValue(self, nums: List[int]) -> int:
-        pre=[0]*len(nums)
+        sum_=0
+        minv=1
         for i,num in enumerate(nums):
-            if not pre: 
-                pre[0]=num
-            else:
-                pre[i]=pre[i-1]+num
-        ans=min(pre)
-        return 1 if ans>=0 else -(ans-1)
-                
+            sum_+=num
+            minv=min(minv,sum_)
+        return minv if minv>=0 else -(minv-1)                
                 
         
