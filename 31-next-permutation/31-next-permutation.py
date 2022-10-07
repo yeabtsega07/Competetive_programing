@@ -4,21 +4,21 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         
         """
-        if len(nums)<=2:
-            return nums.reverse()
-        pt1=len(nums)-2
-        pt2=len(nums)-1
-        while pt1>=0:
-            if nums[pt1]>=nums[pt2]:
-                pt1-=1
-                pt2-=1
-            else:
+        if len(nums)==1:
+            return nums
+        for i in range(len(nums)-2,-1,-1):
+            if nums[i]<nums[i+1]:
+                break         
+        j=len(nums)-1
+        while j>i:
+            if nums[j]>nums[i]:
                 break
-        if pt1==-1:
+            j-=1 
+        if j==i:
             return nums.reverse()
-        for i in reversed(range(len(nums))):
-            if nums[i]>nums[pt1]:
-                nums[pt1],nums[i]=nums[i],nums[pt1]
-                break
-        nums[pt1+1:] = reversed(nums[pt1+1:]) 
+        nums[i],nums[j]=nums[j],nums[i]
+        nums[i+1:]=reversed(nums[i+1:])
+                
+    
+
         
