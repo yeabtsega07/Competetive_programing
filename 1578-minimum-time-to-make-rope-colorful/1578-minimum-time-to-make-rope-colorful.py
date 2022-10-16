@@ -32,10 +32,12 @@ class Solution:
         start
         time=[2,3,1,4,5]
         """
-        start,end=0,0
+        # end=0
+        start=0
         sum_,max_=0,0
         res=0
-        while end<len(c):
+        # while end<len(c):
+        for end in range(0,len(c)):
             
             if c[start]==c[end]:
                 sum_+=time[end]
