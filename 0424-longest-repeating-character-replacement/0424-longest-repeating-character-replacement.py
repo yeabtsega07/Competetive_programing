@@ -16,7 +16,6 @@ class Solution:
                 else:
                     track.pop(s[left])
                 sum_-=1
-                max_=max(track.values())
                 left+=1    
             ans = max(ans,right-left+1)
          
