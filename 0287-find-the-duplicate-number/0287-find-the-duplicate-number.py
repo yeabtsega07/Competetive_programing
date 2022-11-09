@@ -1,10 +1,19 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        nums.sort()
+        l,r = 1,len(nums)-1
         
-        for i in range(len(nums)-1):
-            if nums[i] == nums[i+1]:
-                return nums[i]
+        while l<=r:
+            mid = (l+r)//2
+            cnt = 0
+            
+            cnt = sum(n <= mid for n in nums)
+            if cnt > mid:
+                dup = mid
+                r = mid - 1
+            else:
+                l = mid + 1
+        
+        return dup
         
         
         
