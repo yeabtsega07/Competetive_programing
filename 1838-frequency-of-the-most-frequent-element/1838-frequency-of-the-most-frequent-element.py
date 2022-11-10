@@ -2,23 +2,17 @@ class Solution:
     def maxFrequency(self, nums: List[int], k: int) -> int:
         nums.sort()
         
-        #sliding window
-        # condition nums[right]*window length <= sum_ upto nums[right] + k
+        l, res, curSum = 0, 0, 0
         
-        left,right=0,0
-        sum_,res=0,0
+        for r in range(len(nums)):
+            curSum += nums[r]
+            
+            while nums[r] * (r - l + 1) > curSum + k:
+                curSum -= nums[l]
+                l += 1
+            
+            res = max(res , r - l + 1)
         
-        while right<len(nums):
-            sum_+=nums[right]
-            
-            while nums[right]*(right-left+1) > sum_+k:
-                sum_-=nums[left]
-                left+=1
-                
-            res=max(res,right-left+1)    
-            right+=1
-            
-  
-        return res       
+        return res
                 
         
