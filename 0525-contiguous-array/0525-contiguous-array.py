@@ -1,17 +1,22 @@
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
-        pre={0:-1}
-        res,count=0,0
-        for i,n in enumerate(nums):
-            if n==0:
-                count-=1
+        track  = {0:-1}
+        res, cnt = 0, 0
+        
+        for i, num in enumerate(nums):
+        
+            if num == 0:
+                cnt -= 1
             else:
-                count+=1
-            if count in pre.keys():
-                res=max(res,i-pre[count])
+                cnt += 1
+            
+            if cnt in track.keys():
+                res = max(res, i - track[cnt])
             else:
-                pre[count]=i
-        return res        
+                track[cnt] = i
+        
+        return res
+                
             
             
 
