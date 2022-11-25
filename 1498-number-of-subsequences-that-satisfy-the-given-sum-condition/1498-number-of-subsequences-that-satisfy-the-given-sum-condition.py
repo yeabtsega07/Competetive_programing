@@ -10,7 +10,7 @@ class Solution:
             
             else:
                 
-                res += 2**(right - left)
+                res += pow(2,(right - left),(10**9 + 7))
                 left += 1
         
         # print(res)
