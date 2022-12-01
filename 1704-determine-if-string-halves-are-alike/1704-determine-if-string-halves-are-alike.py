@@ -1,17 +1,18 @@
 class Solution:
     def halvesAreAlike(self, s: str) -> bool:
-        firstHalf = []
-        secondHalf = []
+        firstHalf = 0
+        secondHalf = 0
         vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+        
         for i,char in enumerate(s):
             if i >= len(s)//2:
                 if char in vowels:
-                    secondHalf.append(char)
+                    secondHalf += 1
             else:
                 if char in vowels:
-                    firstHalf.append(char)
+                    firstHalf += 1
         
-        # print(firstHalf, secondHalf)
-        return len(firstHalf) == len(secondHalf)
+
+        return firstHalf == secondHalf
             
         
