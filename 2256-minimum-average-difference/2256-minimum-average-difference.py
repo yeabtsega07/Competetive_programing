@@ -1,15 +1,15 @@
 class Solution:
     def minimumAverageDifference(self, nums: List[int]) -> int:
         res = [0,float('inf')]
-        
-        for i in range(1, len(nums)):
-            nums[i] += nums[i-1]
+        preSum, totalSum = 0, sum(nums)
         
         for i , num in enumerate(nums):
+            preSum += num
+            
             if i < len(nums) - 1: 
-                cur  = (num // (i+1)) - ((nums[-1] - num) // (len(nums) - i - 1) )
+                cur  = (preSum // (i+1)) - ((totalSum - preSum) // (len(nums) - i - 1) )
             else:
-                cur  = (num // (i+1)) - ((nums[-1] - num) // (len(nums) - i ) )
+                cur  = (preSum // (i+1)) - ((totalSum - preSum) // (len(nums) - i ) )
                 
             if res[1] > abs(cur):
                 res = [i, abs(cur)]
