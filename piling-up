@@ -1,0 +1,22 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+t = int(input())
+for i in range(t):
+    n = int(input())
+    nums = list(map(int,input().split()))
+
+    left, right = 0, n-1
+    check = 1
+    pre = float('inf')
+    while left <= right:
+        if nums[right] >= nums[left] and nums[right] <= pre:
+            pre = nums[right]
+            right -= 1
+        elif nums[left] > nums[right] and nums[left] <= pre:
+            pre = nums[left]
+            left += 1
+        else:
+            print("No")
+            check = 0
+            break 
+    if check:    
+        print("Yes")           
