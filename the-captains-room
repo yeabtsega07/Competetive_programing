@@ -1,0 +1,9 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import *
+k = int(input())
+rooms = list(map(int,input().split())) 
+check = Counter(rooms)
+for i in check.keys():
+    if check[i] == 1:
+        print(i)
+        break
