@@ -1,0 +1,15 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import *
+n = int(input())
+words = []
+for i in range (n):
+    word = input()
+    words.append(word)
+
+check = Counter(words)
+print(len(check))
+print(*check.values())
+        
+    
+    
+
