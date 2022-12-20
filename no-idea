@@ -1,0 +1,13 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n, m = map(int,input().split())
+nums = list(map(int,input().split())) 
+a = set(map(int,input().split()))
+b = set(map(int,input().split()))
+ans = 0
+for num in nums:
+    if num in a:
+       ans += 1
+    elif num in b:
+        ans -= 1 
+
+print(ans)
