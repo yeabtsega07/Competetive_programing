@@ -1,0 +1,13 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def inlt():
+    return(set(map(int,input().split())))
+setA = inlt()
+n = int(input())
+ans = True
+for i in range(n):
+    setB = inlt()
+    check = setA.difference(setB)
+    if not check or (len(setA) - len(setB)) != len(check):
+        ans = False
+
+print(ans)
