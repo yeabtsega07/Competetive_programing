@@ -1,0 +1,14 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import defaultdict
+
+
+n, m = map(int, input().split())
+count = defaultdict(list)
+for i in range(n):
+    char = input()
+    count[char].append(i+1)
+for j in range(m):
+    letter = input()
+    index = count[letter]
+    print(*index) if index else print(-1)
+            
