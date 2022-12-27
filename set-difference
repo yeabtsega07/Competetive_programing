@@ -1,0 +1,7 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = int(input())
+nums = set(map(int, input().split()))
+b = int(input())
+students = set(map(int, input().split()))
+check = nums.difference(students)
+print(len(check))
