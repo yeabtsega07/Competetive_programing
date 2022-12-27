@@ -1,0 +1,14 @@
+import textwrap
+
+def wrap(string, max_width):
+    track, cur = [], ""
+    for i in range(len(string)):
+        cur += string[i]
+        if len(cur) == max_width:
+            track.append(cur)
+            cur = ""
+    if cur:
+        track.append(cur)  
+    return "\n".join(track)
+
+if __name__ == '__main__':
