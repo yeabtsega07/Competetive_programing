@@ -1,0 +1,19 @@
+p=(int(input()))
+def inlt():
+     return(list(map(int,input().split())))
+ 
+for x in range(p):
+    n = int(input())
+    nums = inlt()
+    text = input()
+    track, flag = {}, 0
+    for i,num in enumerate(nums):
+        if num not in track.keys():
+            track[num] = text[i]
+        else:
+            if track[num] != text[i]:
+                print("NO")
+                flag = 1
+                break
+    if not flag:
+        print("YES") 
