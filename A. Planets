@@ -1,0 +1,14 @@
+from collections import *
+p=(int(input()))
+def inlt():
+     return(list(map(int,input().split())))
+for i in range(0,p):
+    n, c = map(int, input().split())
+    nums = inlt()
+    check = Counter(nums)
+    ans = 0
+    # print(check)
+    for num in sorted(set(nums)):
+        # print(num)
+        ans += min(check[num], c )
+    print(ans)   
