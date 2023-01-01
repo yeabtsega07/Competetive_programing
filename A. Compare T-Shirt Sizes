@@ -1,0 +1,34 @@
+from collections import *
+p=(int(input()))
+def inlt():
+     return(list(map(int,input().split())))
+ 
+for x in range(p):
+    size1, size2 = input().split()
+    # check1, check2 = Counter(size1), Counter(size2)
+    num1, num2 = 0, 0
+    for i in range(len(size1) - 1, -1, -1):
+        if size1[i] == "S":
+            num1 = -1
+        elif size1[i] == "L":
+            num1 = 1
+        elif size1[i] == "M":
+            continue
+        else:
+            num1 *= 10
+    for i in range(len(size2) - 1, -1, -1):
+        if size2[i] == "S":
+            num2 = -1
+        elif size2[i] == "L":
+            num2 = 1
+        elif size2[i] == "M":
+            continue
+        else:
+            num2 *= 10   
+ 
+    if num1 > num2:
+        print(">")
+    elif num1 < num2:
+        print("<")
+    else:
+        print("=")
