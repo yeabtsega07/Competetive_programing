@@ -1,17 +1,18 @@
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
 
-        for i in range(len(heights) - 1):
+        for i in range(1, len(heights)):
             
-            max_index = i
-            for j in range(i + 1 ,len(heights)):
-                
-                if heights[max_index] < heights[j]:
-                    max_index = j
-                    
-            if heights[max_index] != heights[i]:
-                heights[i], heights[max_index] = heights[max_index], heights[i]
-                names[i], names[max_index] = names[max_index], names[i]
-                   
+            cur_name = names[i]
+            cur_height = heights[i]
+            ind = i - 1
+            while ind >= 0 and cur_height > heights[ind]:
+                heights[ind + 1] = heights[ind]
+                names[ind + 1] = names[ind]
+                ind -= 1
+            
+            names[ind + 1] =  cur_name
+            heights[ind + 1] = cur_height
+                       
         return names
         
