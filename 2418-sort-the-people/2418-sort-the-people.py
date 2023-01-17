@@ -5,14 +5,14 @@ class Solution:
             
             cur_name = names[i]
             cur_height = heights[i]
-            ind = i - 1
-            while ind >= 0 and cur_height > heights[ind]:
-                heights[ind + 1] = heights[ind]
-                names[ind + 1] = names[ind]
+            ind = i 
+            while ind > 0 and cur_height > heights[ind - 1]:
+                heights[ind] = heights[ind - 1]
+                names[ind] = names[ind - 1]
                 ind -= 1
             
-            names[ind + 1] =  cur_name
-            heights[ind + 1] = cur_height
+            names[ind] =  cur_name
+            heights[ind] = cur_height
                        
         return names
         
