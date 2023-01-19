@@ -1,0 +1,43 @@
+p = int(input())
+def inlt():
+     return(list(map(int,input().split())))
+for x in range(p):
+    n, m = map(int, input().split())
+    mat = []
+    for _ in range(n):
+        mat.append(inlt())
+        
+    ans = 0
+    for i in range(n):
+        for j in range(m):
+            ci, cj = i, j
+            cur = 0
+            
+            while 0 <= ci < n and 0 <= cj < m :
+                cur += mat[ci][cj]
+                ci -= 1
+                cj -= 1 
+                
+            ci, cj = i, j
+            while 0 <= ci < n and 0 <= cj < m :
+                cur += mat[ci][cj]
+                ci -= 1
+                cj += 1 
+                
+            ci, cj = i, j    
+            while 0 <= ci < n and 0 <= cj < m :
+                cur += mat[ci][cj]
+                ci += 1
+                cj += 1 
+            
+            ci, cj = i, j    
+            while 0 <= ci < n and 0 <= cj < m :
+                cur += mat[ci][cj]
+                ci += 1
+                cj -= 1   
+                
+            # print(cur)
+            cur -= mat[i][j] * 3
+            ans = max(ans, cur)
+    
+    print(ans)          
