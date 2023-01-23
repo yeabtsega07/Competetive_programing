@@ -1,0 +1,22 @@
+p = int(input())
+def inlt():
+     return(list(map(int,input().split())))
+for x in range(p):
+    n = int(input())
+    nums = inlt()
+    nums.sort(reverse = True)
+    
+    if n == 1:
+        print("YES")
+        continue
+    
+    for i in reversed(range(n - 1)):
+        
+        if abs(nums[i + 1] - nums[i]) <= 1:
+            nums.pop()
+    
+    if len(nums) == 1:
+        print("YES")
+    else:
+        print("NO")            
+        
