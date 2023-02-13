@@ -1,0 +1,24 @@
+n ,m = map(int, input().split())
+def inlt():
+     return(list(map(int,input().split()))) 
+nums1 = inlt()
+nums2 = inlt()
+pt1, pt2, ans = 0 ,0, []
+ 
+while pt1 < n and pt2 < m:
+    if nums1[pt1] <= nums2[pt2]:
+        ans.append(nums1[pt1]) 
+        pt1 += 1
+    elif nums1[pt1] > nums2[pt2]:
+        ans.append(nums2[pt2])
+        pt2 += 1
+ 
+while pt1 < n:
+    ans.append(nums1[pt1]) 
+    pt1 += 1
+    
+while pt2 < m:
+    ans.append(nums2[pt2]) 
+    pt2 += 1
+ 
+print(*ans)  
