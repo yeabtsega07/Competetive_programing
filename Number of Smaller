@@ -1,0 +1,15 @@
+n ,m = map(int, input().split())
+def inlt():
+     return(list(map(int,input().split()))) 
+nums1 = inlt()
+nums2 = inlt() 
+ans, index = [], 0
+ 
+for i in range(m):
+    
+    while index < n and nums1[index] < nums2[i]:
+        index += 1
+    
+    ans.append(index)
+ 
+print(*ans) 
