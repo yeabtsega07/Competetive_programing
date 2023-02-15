@@ -1,0 +1,28 @@
+n, m = map(int, input().split())
+def inlt():
+     return(list(map(int,input().split())))
+nums = inlt()
+nums.sort()
+if m == 0:
+    if nums[0] - 1:
+        print(nums[0] - 1)
+    else:
+        print(-1)    
+
+
+l = 0
+for r in range(n):
+    
+    if r - l + 1 == m:
+        if r < n - 1:
+            if nums[r] < nums[r + 1]:
+                print(nums[r])
+                break
+            else:
+                print(-1)
+                break
+        else:
+            print(nums[r])
+            break
+
+        
