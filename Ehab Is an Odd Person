@@ -1,0 +1,18 @@
+n = int(input())
+def inlt():
+     return(list(map(int,input().split())))
+ 
+nums = inlt() 
+odd, even = 0, 0 
+
+for i  in range(n):
+    
+    if nums[i] % 2 :
+        odd += 1
+    else:
+        even += 1    
+
+if even > 0 and odd > 0:
+    nums.sort()       
+
+print(*nums)    
