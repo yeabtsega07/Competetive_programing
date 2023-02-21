@@ -5,29 +5,65 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        num1, num2 = [], []
-        check = l1
-        while check:
-            num1.append(str(check.val))
-            check = check.next
+        pt1, pt2, totalSum = l1, l2, ListNode()
+        sum_ , carry = totalSum, -1
         
-        while l2:
-            num2.append(str(l2.val))
-            l2 = l2.next    
-        
-        num1 = int("".join(num1)[::-1])
-        num2 = int("".join(num2)[::-1])
-        num1 = num1 + num2
-        num1, index = str(num1), 0
-        num1 = num1[::-1]
-        
-        l = ListNode()
-        check = l
-        while index < len(num1):
+        while pt1 and pt2:
             
-            check.next = ListNode(int(num1[index]))
-            check = check.next
-            index += 1
+            if carry >= 0:
+                curSum = pt1.val + pt2.val + carry
+            else:
+                curSum = pt1.val + pt2.val 
             
-        return l.next
+            carry = -1
+            if curSum // 10 > 0:
+                carry = curSum // 10
+                curSum %= 10 
+                
+            sum_.next = ListNode(curSum)
+            sum_ = sum_.next
+            pt1 = pt1.next
+            pt2 = pt2.next
+            
+        while pt1:
+            
+            if carry >= 0:
+                curSum = pt1.val  + carry
+            else:
+                curSum = pt1.val 
+            
+            carry = -1
+            if curSum // 10 > 0:
+                carry = curSum // 10
+                curSum %= 10 
+            
+            sum_.next = ListNode(curSum)
+            sum_ = sum_.next
+            pt1 = pt1.next
+        
+        while pt2:
+            
+            if carry >= 0:
+                curSum = pt2.val  + carry
+            else:
+                curSum = pt2.val 
+            
+            carry = -1
+            if curSum // 10 > 0:
+                carry = curSum // 10
+                curSum %= 10 
+            
+            sum_.next = ListNode(curSum)
+            sum_ = sum_.next
+            pt2 = pt2.next
+            
+        if carry >= 0:
+            sum_.next = ListNode(carry)
+            sum_ = sum_.next
+        
+        return totalSum.next
+            
+                
+                
+        
         
