@@ -13,7 +13,7 @@ class MyLinkedList:
         if index < 0 or index > self.size-1:
             return -1
         
-        node=self.head
+        node = self.head
         for i in range(index+1):
             node = node.next
         return node.data   
@@ -44,8 +44,9 @@ class MyLinkedList:
         
         if index < 0 or index > self.size-1:
             return
+        
         self.size -= 1
-        pre=self.head
+        pre = self.head
         for i in range(index):
             pre = pre.next
         pre.next = pre.next.next
