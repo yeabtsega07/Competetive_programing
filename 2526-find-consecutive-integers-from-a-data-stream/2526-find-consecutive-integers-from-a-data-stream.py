@@ -12,8 +12,8 @@ class DataStream:
             self.count = 0
                 
         if self.count >= self.k:
-            if num == self.value:
-                return True
+            # if num == self.value:
+            return True
         
         return False
        
