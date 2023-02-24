@@ -4,12 +4,12 @@ class Solution:
         nums += nums 
         for i, num in enumerate(nums):
             
-            while stack and nums[stack[-1][0]] < num:
+            while stack and nums[stack[-1]] < num:
                 
                 cur = stack.pop()
-                ans[cur[0] % len(ans)] = num
+                ans[cur % len(ans)] = num
                 
-            stack.append((i,num))
+            stack.append(i)
         
         return ans
             
