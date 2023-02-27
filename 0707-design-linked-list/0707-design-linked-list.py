@@ -16,6 +16,7 @@ class MyLinkedList:
         node = self.head
         for i in range(index+1):
             node = node.next
+            
         return node.data   
 
     def addAtHead(self, val: int) -> None:
@@ -30,10 +31,13 @@ class MyLinkedList:
         
         if index > self.size:
             return
+        
         self.size += 1
         pre = self.head
+        
         for i in range(index):
             pre = pre.next
+            
         newNode = Node(val) 
         newNode.next = pre.next
         pre.next = newNode
@@ -47,9 +51,12 @@ class MyLinkedList:
         
         self.size -= 1
         pre = self.head
+        
         for i in range(index):
             pre = pre.next
+            
         pre.next = pre.next.next
+        
         return
     
 
