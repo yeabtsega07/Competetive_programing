@@ -3,12 +3,19 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        l, r = 0, len(s) - 1
+        n = len(s)
+        def reverse ( index ):
+            
+            if index >= n // 2:
+                return
+            
+            s[index], s[n - index - 1] = s[ n - index - 1], s[ index]
+            reverse(index + 1)
         
-        while l < r:
-            s[l], s[r] = s[r], s[l]
-            l += 1
-            r -= 1
+        reverse(0)
+        
+            
+            
         
         
         
