@@ -3,15 +3,15 @@ class Solution:
         
         count = 0
         
-        while tickets[k]:
+        for i, ticket in enumerate(tickets):
             
-            for i, ticket in enumerate(tickets):
+            if i < k:
+                count += min(ticket, tickets[k])
                 
-                if ticket  != 0:
-                    tickets[i] -= 1
-                    count += 1 
-                
-                if tickets[i] == 0 and i == k:
-                    break
+            elif i > k:
+                count += min(ticket, tickets[k] - 1)
             
-        return count    
+            else:
+                count += ticket
+        
+        return count 
