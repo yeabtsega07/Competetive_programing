@@ -1,7 +1,7 @@
 class Solution:
     def PredictTheWinner(self, nums: List[int]) -> bool:
         
-    
+        @cache
         def predict(left, right, score1, score2, turn):
             if left > right:
                 return score1 >= score2
