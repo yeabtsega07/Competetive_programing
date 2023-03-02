@@ -1,7 +1,7 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
     
-        res , track = [], []
+        res = []
         
         def recur( cand, target, res, index, track):
             
@@ -17,5 +17,5 @@ class Solution:
             
             recur( cand , target, res, index + 1, track)
         
-        recur(candidates, target, res, 0, track)
+        recur(candidates, target, res, 0, [])
         return res
