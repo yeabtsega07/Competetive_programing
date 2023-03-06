@@ -1,0 +1,19 @@
+p = int(input())
+ 
+for _ in range(p):
+    n, m = map(int, input().split())
+    low, high = 0, min(n, m)
+ 
+    res = 0
+ 
+    while low <= high:
+        mid = (low + high) // 2
+        check = n >= mid and m >= mid and (n - mid + m - mid) // 2 >= mid
+ 
+        if check:
+            res = mid
+            low = mid + 1
+        else:
+            high = mid - 1
+ 
+    print(res)
