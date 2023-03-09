@@ -1,24 +1,25 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        res = []
+        result = []
+        nums =  [ i for i in range( 1, n + 1)]
         
-        def get_subsequence(index, nums,k, t = []):
-
-
-            if index >= len(nums):
-                if len(t) == k:
-                    res.append(t[:])
-                return 
-
-
-            t.append(nums[index])
-            get_subsequence(index + 1, nums,k ,t)
-
-            t.pop()
-            get_subsequence(index + 1, nums,k, t)
+        def backtrack ( nums, index , k , track = []):
             
-        nums = [i for i in range(1, n + 1)]
-        get_subsequence(0, nums, k)
-        
-        return res
+            if index == len(nums):
+                
+                if len(track) == k:
+
+                    result.append( track [:] )
+                
+                return
+            
+            track.append(nums[index])
+            backtrack(nums, index + 1, k, track)
+            
+            track.pop()
+            backtrack(nums, index + 1, k, track)
+            
+        backtrack(nums, 0, k )
+        return result
+                    
             
