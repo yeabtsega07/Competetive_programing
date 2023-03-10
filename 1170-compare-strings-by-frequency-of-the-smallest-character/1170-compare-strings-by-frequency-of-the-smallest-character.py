@@ -23,12 +23,29 @@ class Solution:
         for i, word in enumerate(words):
             
             words[i] = get_count(word)
+            
+            
+        def custom_bisect(nums, key):
+            
+            low, high = 0, len(nums) 
+            
+            while low < high :
+                
+                mid = low + (high - low) // 2
+                
+                if nums[mid] > key:
+                    high = mid
+                else:
+                    low = mid + 1
+            
+            return low
+
         
         words.sort()
         result = []
         for query in queries:
             
-            result.append(len(words) - bisect_right(words, query))
+            result.append(len(words) - custom_bisect(words, query))
         
         return result
             
