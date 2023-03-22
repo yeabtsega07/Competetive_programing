@@ -24,7 +24,6 @@ class Solution:
                 
                 if  not valid or (valid and  last[-2] + last[-3] == last[-1]) :
 
-                    
                     if backtrack( i + 1, last, valid ):
                         return True
                     
