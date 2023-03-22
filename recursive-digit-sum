@@ -1,0 +1,5 @@
+def superDigit(n, k):
+    # Write your code here
+
+    calc = int(n) * k % 9
+    return calc if calc  != 0 else 9
