@@ -1,0 +1,44 @@
+n, k = map(int, input().split())
+nums = list(map(int, input().split()))
+
+def get_winner(list_):
+
+    if len(list_) == 1:
+        return list_
+    res = []
+    n = len(list_) // 2
+
+    left = get_winner(list_[:n])
+    right = get_winner(list_[n:])
+
+    leftMin = float("inf")
+    for i in left:
+        leftMin = min(leftMin, nums[i])
+    
+    rightMin = float("inf")
+    for i in right :
+        rightMin = min(rightMin, nums[i]) 
+
+
+    for i in left:
+
+        if abs(nums[i] - rightMin) <= k:       
+            res.append(i)
+        elif nums[i] > rightMin:
+            res.append(i)
+
+    for i in right:
+
+        if abs(nums[i] - leftMin) <= k:       
+            res.append(i)
+
+        elif nums[i] > leftMin:
+            res.append(i) 
+
+    return res
+
+if __name__ == "__main__":
+    list_  = [i for i in range(2 ** n)]
+    check  = get_winner(list_)               
+    print(*[i + 1 for i in check])
+ 
