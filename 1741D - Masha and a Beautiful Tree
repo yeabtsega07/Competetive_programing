@@ -1,0 +1,49 @@
+from collections import *
+p = int(input())
+
+def inlt():
+     return(list(map(int,input().split())))
+
+for _ in range(p):
+
+    n = int(input())
+    nums = inlt()
+    if  list(Counter(nums).values()) != [1]*len(nums):
+          print(-1)
+    elif max(nums) != n:
+          print(-1)
+
+    check  = [] 
+    def compare(a,b):
+         res = []
+         if a and b and a[0] > b[0]:
+              check.append(1)
+              for i in b:
+                   res.append(i)
+              for i in a:
+                   res.append(i)
+         else:
+              for i in a:
+                   res.append(i)
+              for i in b:
+                   res.append(i)              
+         return res 
+
+    def merge(nums):
+         
+         if len(nums) == 1:
+              return nums
+         half = len(nums) // 2
+         left = nums[:half]
+         right = nums[half:]
+
+         left = merge(left)
+         right = merge(right)
+
+         
+         return compare(left, right)
+    nums = merge(nums)
+    if nums != sorted(nums):
+          print(-1)
+    else:
+          print(sum(check))          
