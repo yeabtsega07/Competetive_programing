@@ -1,0 +1,24 @@
+p = int(input())
+
+for  _ in range(p):
+
+    n = int(input())
+
+    if n == 0:
+        print(2)
+    elif n == 1 or n == 2:
+        print(3)
+    elif n % 2 :
+        print(1)
+    else:
+        num = n
+        count = 0
+
+        while num % 2 == 0:
+
+            num = num // 2
+            count += 1
+
+
+        print(2 ** count + 1 if 2 ** count == n else 2 ** count)    
+
