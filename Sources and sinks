@@ -1,0 +1,22 @@
+from collections import defaultdict
+n = int(input())
+mat = []
+for i in range(n):
+    row = list(map(int, input().split()))
+    mat.append(row)
+
+sources =  []
+sinks = []
+
+for i,row in enumerate(mat):
+
+    if [0] * len(row) == row:
+        sinks.append(i + 1)
+
+for i, col in enumerate(zip(*mat)):
+
+    if [0] * len(col) == list(col):
+        sources.append(i + 1)
+
+print(len(sources), *sources)
+print(len(sinks), *sinks)
