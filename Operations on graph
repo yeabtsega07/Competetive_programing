@@ -1,0 +1,12 @@
+from collections import *
+n = int(input())
+k = int(input())
+graph = defaultdict(list)
+for i in range(k):
+    lst = list(map(int, input().split()))
+
+    if lst[0] == 1:
+        graph[lst[1]].append(lst[2])
+        graph[lst[2]].append(lst[1])
+    else:
+        print(*graph[lst[1]])
