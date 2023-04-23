@@ -1,0 +1,15 @@
+n = int(input())
+def inlt():
+     return(list(map(int,input().split())))
+
+road = set()
+for j in range(n):
+     
+     row = inlt()
+     for i,col in enumerate(row):
+          if col:
+               if (j + 1, i + 1) not in road:
+                    road.add((i + 1, j + 1))   
+
+
+print(len(road))
