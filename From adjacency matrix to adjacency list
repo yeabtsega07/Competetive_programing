@@ -1,0 +1,13 @@
+n = int(input())
+def inlt():
+     return(list(map(int,input().split())))
+
+for _ in range(n):
+     
+     row = inlt()
+     child = []
+     for i,col in enumerate(row):
+          if col:
+               child.append( str(i + 1) )
+
+     print( str(len(child))," ".join(child))
