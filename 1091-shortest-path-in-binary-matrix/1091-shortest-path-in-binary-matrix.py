@@ -34,6 +34,6 @@ class Solution:
         if not grid[0][0]:
              bfs( grid, 0, 0)
                 
-        return min(path) + 1 if path else -1
+        return path[0] + 1 if path else -1
                         
                         
