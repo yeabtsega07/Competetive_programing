@@ -2,31 +2,50 @@ class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         
         graph = defaultdict(list)
+        result = []
+        color = [0] * numCourses
+        stack, visited = [], set()
         inDegree = [0] * numCourses
-        queue = deque()
+        
         
         for end, start  in prerequisites:
             graph[start].append(end)
             inDegree[end] += 1
-        
+            
+        start = []
         for index , val in enumerate(inDegree):
             
             if not val:
-                queue.append(index)
+                start.append(index)
         
-        visited = set()
-        result = []
-        while queue:
+        
+        def dfs( node ):
+
+            if color[node] == 1:
+                return True
             
-            cur = queue.popleft()
-            result.append(cur)
-            for child in graph[cur]:
-                
-                inDegree[child] -= 1
-                if not inDegree[child]:
-                    queue.append(child)
-                    visited.add(child)
+            if color[node] == 2:
+                return False
+
+
+            color[node] = 1
+            for child in graph[node]:
+
+                if dfs(child):
+                    return True
+                        
+
+            stack.append(node)
+            color[node] = 2
+            
+            return False            
         
-        return result if len(result) == numCourses else []
-                    
+        for val in start:
+            
+            if dfs( val ):
+                return []
+    
+        return stack[::-1] if len(stack) == numCourses else []
+                
+                
         
