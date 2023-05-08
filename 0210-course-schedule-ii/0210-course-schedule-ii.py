@@ -18,7 +18,7 @@ class Solution:
         result = []
         while queue:
             
-            cur = queue.pop()
+            cur = queue.popleft()
             result.append(cur)
             for child in graph[cur]:
                 
