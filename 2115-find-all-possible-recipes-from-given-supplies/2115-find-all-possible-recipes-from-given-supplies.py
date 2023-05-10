@@ -16,8 +16,7 @@ class Solution:
         for recipe in recipes:
             if recipe not in inDegree:
                 queue.append(recipe)
-        
-        visited = set()
+
         result = []
         while queue:
             
@@ -29,6 +28,6 @@ class Solution:
                 
                 if not inDegree[child]:
                     queue.append(child)
-                    visited.add(child)
+
         
         return result
