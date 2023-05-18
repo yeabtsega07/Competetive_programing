@@ -5,24 +5,25 @@ class Solution:
 
         for i, j, dis in roads:
             
-            graph[i].append([j,dis])
-            graph[j].append([i,dis])
+            graph[i].append((j,dis))
+            graph[j].append((i,dis))
 
-        visited, result = set(), [float("inf")]    
-        def dfs( node ): 
+        queue = deque([1])
+        visited, result = set(), float("inf")
+        while queue:
             
-            visited.add(node)
-            
+            node = queue.popleft()
+
             for child in graph[node]:
                 
-                result[0] = min( child[1], result[0] )
+                result = min(result, child[1])
                 
                 if child[0] not in visited:
-                    
-                    dfs( child[0] )
+                    visited.add(child[0])
+                    queue.append(child[0])
         
-        dfs(1)
-        
-        return result[0]
+        return result
+                
+                
                 
                 
