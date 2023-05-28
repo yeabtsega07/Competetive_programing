@@ -1,0 +1,48 @@
+#User function Template for python3
+from collections import *
+
+class Solution:
+    def findOrder(self,alien_dict, N, K):
+        
+        graph = defaultdict(list)
+        for i in range(1, N):
+            word1 = alien_dict[i - 1]
+            word2 = alien_dict[i]
+            
+            for i in range( min(len(word1), len(word2))):
+                
+                if word1[i] != word2[i]:
+                    graph[(ord(word1[i]) - ord("a"))].append(((ord(word2[i]) - ord("a"))))
+                    break
+        
+        inDegree = [0] * k
+        for i in range(k):
+            
+            for val in graph[i]:
+                inDegree[val] += 1
+        
+        queue = deque()
+        for i in range(k):
+            if not inDegree[i]:
+                queue.append(i)
+        
+        track = []
+        while queue:
+            
+            node = queue.popleft()
+            track.append(node)
+            
+            for child in graph[node]:
+                
+                inDegree[child] -= 1
+                if inDegree[child] == 0:
+                    queue.append(child)
+        
+        
+        ans = ""
+
+        for val in track:
+
+            ans += chr(val + ord("a"))
+
+        return ans  
