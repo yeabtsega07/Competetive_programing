@@ -1,25 +1,13 @@
 class Solution:
     def maximumElementAfterDecrementingAndRearranging(self, arr: List[int]) -> int:
         arr.sort()
-        dp = [-1] * len(arr)
-        dp[0] = 1
-        def recur ( index ):
-            
-            if index  == 0 :
-                arr[0] = 1
-                return 1
-            
-            check = recur( index - 1 )
-            if abs(check - arr[index]) <= 1:
-                dp[index] = arr[index]
-            else:
-                dp[index] = check + 1
-            
-            return dp[index]
+        arr[0] = 1
         
-        recur( len(arr) - 1 )
-        # print(dp)
+        for i in range( 1, len(arr) ):
+            
+            if abs(arr[i] - arr[i - 1]) > 1:
+                arr[i] = arr[i - 1] + 1
         
-        return max(dp)
+        return arr[-1]
         
         
