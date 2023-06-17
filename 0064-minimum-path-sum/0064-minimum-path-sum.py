@@ -20,7 +20,7 @@ class Solution:
             top += recur(i - 1, j)
             left += recur(i, j - 1)
             
-            # print(top, left, i, j)
+   
             dp[i][j] = min(top, left)
             
             return dp[i][j]
