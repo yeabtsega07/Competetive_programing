@@ -1,30 +1,19 @@
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
         
-        dp = defaultdict(int)
+        dp = [0] * (target + 1)
+        dp[0] = 1
+
+        nums.sort()
         
-        def backtrack ( index, curSum ):
-            
-            if curSum >= target:
-                return 1 if curSum == target else 0
-            
-            
-            for i in range(len(nums)):
-                
-                if (i, curSum + nums[i]) in dp:
-                    cur = dp[(i, curSum + nums[i])]
-                else:    
-                    cur = backtrack(i, curSum + nums[i])
-                    
-                dp[(index, curSum)] += cur
-            
-            return dp[(index, curSum)]
+        for i in range(1, target + 1):
+
+            for num in nums:
+                if num > i:
+                    break
+
+                dp[i] += dp[i - num]
         
-        res = 0
-        for index, num in enumerate(nums):
-            
-            res += backtrack(index, num)
-        
-        return res
+        return dp[target]
             
         
