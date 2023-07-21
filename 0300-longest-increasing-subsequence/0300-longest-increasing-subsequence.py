@@ -4,39 +4,16 @@ class Solution:
 
         dp = {len(nums) - 1 : 1}
         
-        def recur ( index ):
+        for i in reversed(range(len(nums) - 1)):
             
-            if index >= len(nums):
-                return 0
-            
-            
-            if index in dp:
+            cur = 1
+            for j in range(i + 1, len(nums)):
                 
-                return dp[index]
-            
-            cur = 0
-            for i in range (index + 1, len(nums)):
-                
-                if nums[index] < nums[i]:
-                
-                    if i in dp:
-                        take = dp[i]
-                    else:    
-                        take = recur( i )
+                if nums[i] < nums[j]:
 
-                    cur = max(cur, take)
-
+                    cur = max(cur, 1 + dp[j])
             
-            dp[index] = cur + 1
-
-            
-            return dp[index]
+            dp[i] = cur    
         
-        for i in range(len(nums)):
-            if i not in dp:
-
-                recur(i)
-
-
         return max(dp.values())
         
