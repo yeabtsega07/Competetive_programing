@@ -1,26 +1,13 @@
 class Solution:
     def countVowelStrings(self, n: int) -> int:
         
-        dp = {}
+        vowels = [1,1,1,1,1]
         
-        def recur ( index, count ):
+        for i in range(1, n):
             
-            if (index, count) in dp:
-                return dp[(index, count)]
-            
-            if count == n:
-                return 1
-            
-            if index >= 5:
-                return 0
-            
-            dp[(index, count)] = 0
-            
-            for i in range(index, 5 ):
+            for j in range(3, -1, -1):
                 
-                dp[(index, count)] += recur( i, count + 1 )
-            
-            return dp[(index, count)]
+                vowels[j] += vowels[j + 1]
         
-        return recur ( 0, 0 )
+        return sum(vowels)
                 
