@@ -7,18 +7,23 @@ class Solution:
         dir  = [ (1,0), (0,1), (-1,0), (0,-1) ]
         visited = set()
         
-        def dfs (row, col):
+        def bfs( row, col ):
             
+            queue = deque([(row,col)])
             
-            visited.add((row, col))
-            for point in dir:
+            while queue:
                 
-                newcol = col + point[1]
-                newrow = row + point[0]
+                cur_row, cur_col = queue.popleft()
                 
-                if inBound(newrow, newcol) and (newrow, newcol) not in visited:
-                    if grid[row][col] == "1":
-                        dfs(newrow, newcol)
+                for change_row, change_col in dir:
+                    
+                    new_row = cur_row + change_row
+                    new_col = cur_col + change_col
+                    
+                    if inBound(new_row, new_col) and (new_row, new_col) not in visited:
+                        if grid[new_row][new_col] == "1":
+                            queue.append((new_row, new_col))
+                            visited.add((new_row, new_col))
         
         result =  0
         for row in range(len(grid)):
@@ -26,7 +31,7 @@ class Solution:
 
                 if grid[row][col] == "1" and (row, col) not in visited:
 
-                    dfs(row, col)
+                    bfs(row, col)
                     result += 1
         
         return result
