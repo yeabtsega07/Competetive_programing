@@ -1,41 +1,34 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        result = 0
-        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-        visited = [[0 for i in range(len(grid[0]))] for j in range(len(grid))]
         
-        def inbound(row, col):
-            return (0 <= row < len(grid) and 0 <= col < len(grid[0]))
+        def inBound ( row, col):
+            return 0 <= row < len(grid) and 0 <= col < len(grid[0])
         
-        def dfs(grid, visited, row, col):
+        dir  = [ (1,0), (0,1), (-1,0), (0,-1) ]
+        visited = set()
+        
+        def dfs (row, col):
+            
+            
+            visited.add((row, col))
+            for point in dir:
+                
+                newcol = col + point[1]
+                newrow = row + point[0]
+                
+                if inBound(newrow, newcol) and (newrow, newcol) not in visited:
+                    if grid[row][col] == "1":
+                        dfs(newrow, newcol)
+        
+        result =  0
+        for row in range(len(grid)):
+            for col in range(len(grid[0])):
 
-            
-            
-            visited[row][col] = True
-            
-              
-            
-            for row_change, col_change in directions:
-                new_row = row + row_change
-                new_col = col + col_change
-                
-                
-                
-                if inbound(new_row, new_col) and not visited[new_row][new_col]:
-                    
-                    if grid[new_row][new_col] == "1":
-                        dfs(grid, visited, new_row, new_col)
+                if grid[row][col] == "1" and (row, col) not in visited:
+
+                    dfs(row, col)
+                    result += 1
         
-        
-        count = 0
-        for i in range(len(grid)):
-            for j in range(len(grid[i])):
-                
-                if grid[i][j] == "1" and not visited[i][j]:
-                    dfs(grid, visited, i, j)
-                    count += 1
-        
-    
-        return count
+        return result
                 
                                
