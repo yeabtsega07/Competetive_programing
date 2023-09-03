@@ -1,24 +1,24 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         
-        dp = defaultdict(int)
+        dp = {}
         
-        def recur( i, j ):
+        def recur( row, col):
             
-            if i == 0 and j ==  0:
-                return 1
+            if (row, col) in dp:
+                return dp[(row, col)]
             
-            if i < 0 or j < 0:
+            if row < 0 or col < 0:
                 return 0
             
-            if dp[(i,j)]:
-                return dp[(i,j)]
+            if row == 0 and col == 0:
+                return 1
             
-            left = recur( i, j - 1 )
-            top = recur( i - 1, j )
-            dp[(i, j)] = left + top
+            top = recur(row - 1, col)
+            left = recur(row, col - 1)
             
-            return dp[(i,j)]
+            dp[(row, col)] = top + left
+            
+            return dp[(row, col)]
         
         return recur(m - 1, n - 1)
-            
