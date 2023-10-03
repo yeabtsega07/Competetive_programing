@@ -11,6 +11,18 @@ class Trie:
                 cur.children[char] = TrieNode()
             cur = cur.children[char] 
         cur.is_end = True
+    
+    def isValid(self, word):
+        cur = self.root
+        
+        for char in word:
+            
+            if char not in cur.children or not cur.children[char].is_end:
+                return False
+            
+            cur = cur.children[char]
+        
+        return True
 
 
 
@@ -24,24 +36,17 @@ class Solution:
         obj = Trie()
         for word in words:
             obj.insert(word)
-
-        track, length = [], 0
-        stack = [(obj.root, [""])]
-        while stack:
-            node, cur = stack.pop()
-            if not node.is_end:
-                continue
-                
-            if len(cur) >= length:
-                track = cur
-                length = len(cur)
-            
-            for val in range(26):
-                char = chr(val + 97)
-                if char in node.children:
-                    stack.append((node.children[char], cur + [char]))
         
-        return "".join(track)
+        words.sort()
+        res = ""
+        
+        for word in words:
+            
+            if obj.isValid(word) and len(word) > len(res):
+                res = word
+        
+        return res
+
         
         
         
