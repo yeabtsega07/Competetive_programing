@@ -1,16 +1,16 @@
 class Solution:
     def findPairs(self, nums: List[int], k: int) -> int:
         
-        nums.sort()
+        count = Counter(nums)
+        result = 0
         
-        track_sum = defaultdict(int)
-        possible_nums = set()
-        
-        for num in nums:
+        for key in count:
             
-            if num in track_sum:
-                possible_nums.add((num, track_sum[num]))
-            
-            track_sum[num + k] = num
+            if k == 0:
+                if count[key] > 1:
+                    result += 1
+            else:
+                if key + k in count:
+                    result += 1
         
-        return len(possible_nums)
+        return result
