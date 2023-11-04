@@ -1,7 +1,7 @@
 class Solution:
     def minHeightShelves(self, books: List[List[int]], shelfWidth: int) -> int:
         
-        @lru_cache
+        @cache
         def recur ( index, current_height, remaining_w):
             
             # base case
