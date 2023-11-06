@@ -8,36 +8,22 @@ class Solution:
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
         
         
-        visited = set()
-        res = defaultdict(TreeNode)
+        subtrees = defaultdict(int)
+        result = []
         
-        def inorder(root):
-
-            if not root:
-                return
-            
-            inorder(root.left)
-            inorder(root.right)
-            cur = []
-            get_inorder(root,cur)
-            cur = tuple(cur)
-            if cur in visited:
-                res[cur] = root
-            
-            visited.add(cur)
-            
-        
-        def get_inorder(root, cur):
+        def preorder(root):
             
             if not root:
-                cur.append(None)
-                return
+                return "Null"
             
-            get_inorder(root.left, cur)
-            get_inorder(root.right,cur)
-            cur.append(root.val)
+            serial = ",".join([str(root.val), preorder(root.left), preorder(root.right)])
+            if subtrees[serial] == 1:
+                result.append(root)
             
+            subtrees[serial] += 1
+            
+            
+            return serial
         
-        inorder(root)
-        # print(res)
-        return list(res.values())
+        preorder(root)
+        return result
