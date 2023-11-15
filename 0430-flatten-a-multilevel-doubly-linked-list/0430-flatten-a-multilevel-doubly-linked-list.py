@@ -10,38 +10,31 @@ class Node:
 
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-
-        def recur (current, parent):
-
-            if not current:
-                return
-            
-            if parent:
-                current.prev = parent
-                parent.next = current
                 
-
-                
-            while current.next and not current.child: 
-                current = current.next
-
-            if current and current.child:
-                next_list = current.next
-                node = recur( current.child, current)
-                current.child = None
-                if next_list:
-                    next_list.prev = node
-                    node.next = next_list
-                    
-            
-            while current.next and not current.child:
-                current = current.next
-            
-            return current
+        cur = head
+        stack = []
         
-        dummy = head
-        recur(dummy, None)
-
+        while cur:
+            
+            if cur.child:
+                if cur.next:
+                    stack.append(cur.next)
+                
+                cur.next = cur.child
+                cur.next.prev = cur
+                cur.child = None
+            
+            if not cur.next and stack:
+                cur.next = stack.pop()
+                cur.next.prev = cur
+            
+            cur = cur.next
+        
         return head
+            
+            
+                
+            
+            
             
             
