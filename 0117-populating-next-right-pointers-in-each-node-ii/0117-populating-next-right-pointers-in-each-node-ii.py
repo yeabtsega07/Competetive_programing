@@ -10,30 +10,62 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
-        """
-        level order travsesal BFS O(N) time and O(N) space
+#         """
+#         level order travsesal BFS O(N) time and O(N) space
         
-        """
-        if not root:
-            return
+#         """
+#         if not root:
+#             return
 
-        queue = deque([root])
+#         queue = deque([root])
         
-        while queue:
-            prev = None
+#         while queue:
+#             prev = None
             
-            for i in range(len(queue)):
-                cur = queue.popleft()
+#             for i in range(len(queue)):
+#                 cur = queue.popleft()
                 
-                if prev:
-                    prev.next = cur
+#                 if prev:
+#                     prev.next = cur
+                
+#                 if cur.left:
+#                     queue.append(cur.left)
+                
+#                 if cur.right:
+#                     queue.append(cur.right)
+                
+#                 prev = cur
+                
+#         return root       
+        
+        leftMost = root
+        
+        while leftMost:
+            
+            cur = leftMost
+            leftMost = None
+            pre = None
+            
+            while cur:
                 
                 if cur.left:
-                    queue.append(cur.left)
-                
+                    if not leftMost:
+                        leftMost = cur.left
+                    
+                    if pre:
+                        pre.next = cur.left
+                    pre = cur.left
+                    
                 if cur.right:
-                    queue.append(cur.right)
-                
-                prev = cur
-                
-        return root        
+                    if not leftMost:
+                        leftMost = cur.right
+                    
+                    if pre:
+                        pre.next = cur.right
+                    
+                    pre = cur.right
+                       
+                cur = cur.next
+        
+        return root
+            
