@@ -1,7 +1,7 @@
 class Solution:
     def getKth(self, lo: int, hi: int, k: int) -> int:
         
-        memo = {1:0}
+        memo = {1:1}
         
         def get_power(num):
             
@@ -21,7 +21,7 @@ class Solution:
             
             nums[num] = get_power(num)
         
-        nums = sorted(nums.items(), key = lambda x:x[1])
 
-        return nums[k - 1][0]
+
+        return sorted(nums.items(), key = lambda x:x[1])[k - 1][0]
             
