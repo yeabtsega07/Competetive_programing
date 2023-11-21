@@ -1,27 +1,27 @@
 class Solution:
     def getKth(self, lo: int, hi: int, k: int) -> int:
         
-        track = defaultdict(int)
-        memo = {1 : 1}
+        memo = {1:0}
         
         def get_power(num):
-
+            
             if num in memo:
                 return memo[num]
             
             if num % 2:
-                ans = 1 + get_power(3 * num + 1)
+                cur = 1 + get_power(num * 3 + 1)
             else:
-                ans = 1 + get_power(num // 2)
+                cur = 1 + get_power(num // 2)
             
-            memo[num] = ans
-            
-            return ans
+            return cur
+        
+        nums = {}
         
         for num in range(lo, hi + 1):
             
-            track[num] = get_power(num)
-            
+            nums[num] = get_power(num)
         
-        return sorted(track.items(), key = lambda x:x[1])[k - 1][0]
+        nums = sorted(nums.items(), key = lambda x:x[1])
+
+        return nums[k - 1][0]
             
