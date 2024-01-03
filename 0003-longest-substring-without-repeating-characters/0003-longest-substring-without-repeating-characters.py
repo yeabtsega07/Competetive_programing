@@ -6,9 +6,10 @@ class Solution:
        max_len = 0
 
        for end in range(len(s)):
-           if s[end] in seen and seen[s[end]] >= start:
-               start = seen[s[end]] + 1
-           seen[s[end]] = end
+           curr_char = s[end]
+           if curr_char in seen and seen[curr_char] >= start:
+               start = seen[curr_char] + 1
+           seen[curr_char] = end
            max_len = max(max_len, end - start + 1)
 
        return max_len
