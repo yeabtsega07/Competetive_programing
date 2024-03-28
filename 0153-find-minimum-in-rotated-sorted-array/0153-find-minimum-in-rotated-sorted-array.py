@@ -21,9 +21,8 @@ class Solution:
             return left
         
         index = get_pivot(nums)
-        if index < len(nums) - 1:
-            return nums[index + 1]
-        elif index == len(nums) - 1:
+
+        if index == len(nums) - 1:
             return nums[0]
         else:
             return nums[index + 1]
