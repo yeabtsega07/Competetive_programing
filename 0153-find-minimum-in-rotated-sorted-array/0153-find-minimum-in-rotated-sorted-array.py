@@ -8,9 +8,9 @@ class Solution:
 
                 mid = left + (right - left) // 2
 
-                if mid < right and nums[mid] > nums[mid + 1]:
+                if  nums[mid] > nums[mid + 1]:
                     return mid
-                if mid > left and nums[mid] < nums[mid - 1]:
+                if  nums[mid] < nums[mid - 1]:
                     return mid - 1
 
                 if nums[left] > nums[mid]:
