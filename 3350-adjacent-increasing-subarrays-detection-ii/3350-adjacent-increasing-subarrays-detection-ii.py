@@ -10,9 +10,9 @@ class Solution:
             return idx2 - idx + 1
         
         n=len(arr)
-        prev_len = helper(0,arr)
-        ans=prev_len//2
-        l=prev_len
+        ans=1
+        prev_len = 0
+        l=0
         r=0
 
         while l<n:
