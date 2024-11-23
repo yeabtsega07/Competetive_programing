@@ -1,39 +1,31 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         
-        def inBound ( row, col):
-            return 0 <= row < len(grid) and 0 <= col < len(grid[0])
+        Row, Col = len(grid), len(grid[0])
+        directions = [(1,0), (0, 1), (0, -1), (-1, 0)]
+        def inBound(row, col):
+            return 0 <= row < Row and 0 <= col < Col
+        visited = [[False for _ in range(Col) ] for _ in range(Row)]
         
-        dir  = [ (1,0), (0,1), (-1,0), (0,-1) ]
-        visited = set()
-        
-        def bfs( row, col ):
+        def dfs( row, col ):
             
-            queue = deque([(row,col)])
+            visited[row][col] = True
             
-            while queue:
-                
-                cur_row, cur_col = queue.popleft()
-                
-                for change_row, change_col in dir:
-                    
-                    new_row = cur_row + change_row
-                    new_col = cur_col + change_col
-                    
-                    if inBound(new_row, new_col) and (new_row, new_col) not in visited:
-                        if grid[new_row][new_col] == "1":
-                            queue.append((new_row, new_col))
-                            visited.add((new_row, new_col))
+            for direction in directions:
+                new_row, new_col = row + direction[0], col + direction[1]
+                if inBound(new_row, new_col) and grid[new_row][new_col] == "1":
+                    if not visited[new_row][new_col]:
+                        dfs(new_row, new_col)
+            
         
-        result =  0
-        for row in range(len(grid)):
-            for col in range(len(grid[0])):
-
-                if grid[row][col] == "1" and (row, col) not in visited:
-
-                    bfs(row, col)
-                    result += 1
-        
-        return result
+        count = 0
+        for row in range(Row):
+            for col in range(Col):
                 
-                               
+                if grid[row][col] == "1":
+                    if not visited[row][col]:
+                        dfs(row, col)
+                        count += 1
+        
+        return count
+        
